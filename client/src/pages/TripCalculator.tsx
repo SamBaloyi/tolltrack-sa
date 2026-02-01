@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Calculator, MapPin, Search } from "lucide-react";
 import { routeApi, tripsApi } from "@/services/api";
 import { getUserId } from "@/utils/storage";
+import { formatCurrency } from "@/utils/currency";
 import { VEHICLE_CLASSES } from "@/config/constants";
 import { filterTollGatesBySearch } from "@/utils/filters";
 import type { TollGate, RouteCalculation } from "@/types";
@@ -208,7 +209,7 @@ export default function TripCalculator({ tollGates }: TripCalculatorProps) {
                       </div>
                       <div className="text-right ml-4">
                         <div className="text-lg font-black text-orange-600">
-                          R{tg[`class${vehicleClass}_fee`]}
+                          R{formatCurrency(tg[`class${vehicleClass}_fee`])}
                         </div>
                       </div>
                     </div>
@@ -268,7 +269,7 @@ export default function TripCalculator({ tollGates }: TripCalculatorProps) {
                         </div>
                       </div>
                       <div className="font-black text-orange-600">
-                        R{tg.fee}
+                        R{formatCurrency(tg.fee)}
                       </div>
                     </div>
                   ))}

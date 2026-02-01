@@ -6,6 +6,7 @@ import {
   filterTollGatesByRoute,
   getUniqueRoutes,
 } from "@/utils/filters";
+import { formatCurrency } from "@/utils/currency";
 import EmptyState from "@/components/common/EmptyState";
 import type { TollGate } from "@/types";
 
@@ -113,7 +114,7 @@ export default function TollLookup({ tollGates }: TollLookupProps) {
                   Class {vehicleClass} Fee
                 </div>
                 <div className="text-4xl font-black text-green-600 dark:text-green-500 mt-2">
-                  R{tg[`class${vehicleClass}_fee`]}
+                  R{formatCurrency(tg[`class${vehicleClass}_fee`])}
                 </div>
               </div>
 
@@ -123,7 +124,7 @@ export default function TollLookup({ tollGates }: TollLookupProps) {
                     Class 1:
                   </span>
                   <span className="font-black text-slate-800 dark:text-white">
-                    R{tg.class1_fee}
+                    R{formatCurrency(tg.class1_fee)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
@@ -131,7 +132,7 @@ export default function TollLookup({ tollGates }: TollLookupProps) {
                     Class 2:
                   </span>
                   <span className="font-black text-slate-800 dark:text-white">
-                    R{tg.class2_fee}
+                    R{formatCurrency(tg.class2_fee)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
@@ -139,7 +140,7 @@ export default function TollLookup({ tollGates }: TollLookupProps) {
                     Class 3:
                   </span>
                   <span className="font-black text-slate-800 dark:text-white">
-                    R{tg.class3_fee}
+                    R{formatCurrency(tg.class3_fee)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
@@ -147,7 +148,7 @@ export default function TollLookup({ tollGates }: TollLookupProps) {
                     Class 4:
                   </span>
                   <span className="font-black text-slate-800 dark:text-white">
-                    R{tg.class4_fee}
+                    R{formatCurrency(tg.class4_fee)}
                   </span>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { History } from "lucide-react";
 import { tripsApi } from "@/services/api";
 import { getUserId } from "@/utils/storage";
+import { formatCurrency } from "@/utils/currency";
 import { exportTripsToCSV } from "@/utils/export";
 import { MONTHS } from "@/config/constants";
 import StatsCards from "@/components/common/StatsCards";
@@ -177,7 +178,7 @@ export default function TripHistory() {
                           </div>
                         </div>
                         <div className="font-black text-orange-600">
-                          R{tg.fee}
+                          R{formatCurrency(tg.fee)}
                         </div>
                       </div>
                     ))}

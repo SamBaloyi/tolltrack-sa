@@ -1,0 +1,31 @@
+{
+  "name": "tolltrack_sa",
+  "version": "1.0.0",
+  "description": "A comprehensive web application for tracking and managing toll gate expenses on South African roads. Built with Bun, Elysia, React, and Tailwind CSS.",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "bun run --bun concurrently \"bun run dev:server\" \"bun run dev:client\"",
+    "dev:server": "cd server && bun run dev",
+    "dev:client": "cd client && bun run dev",
+    "build": "cd client && bun run build",
+    "build:server": "cd server && bun build main.ts --outdir dist --target bun",
+    "start": "cd server && bun run start",
+    "test": "bun test",
+    "test:client": "cd client && bun test",
+    "test:server": "cd server && bun test",
+    "test:watch": "bun test --watch",
+    "type-check": "cd client && bun run type-check && cd ../server && bun run type-check",
+    "install:all": "bun install && cd server && bun install && cd ../client && bun install",
+    "setup": "bun run install:all"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "@types/bun": "latest"
+  }
+}

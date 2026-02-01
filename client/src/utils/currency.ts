@@ -3,7 +3,9 @@
  * If it's a whole number, display without decimals
  * If it has decimals, display with 2 decimal places
  */
-export function formatCurrency(value: number | string): string {
+export function formatCurrency(value: number | string | undefined): string {
+  if (value === undefined || value === null) return "0";
+  
   const num = typeof value === "string" ? parseFloat(value) : value;
 
   if (isNaN(num)) return "0";

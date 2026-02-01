@@ -14,28 +14,28 @@ export type TollGate = {
   direction?: string;
 };
 
-export function getAllTollGates() {
-  return db.query("SELECT * FROM toll_gates ORDER BY route, name").all();
+export function getAllTollGates(): TollGate[] {
+  return db.query("SELECT * FROM toll_gates ORDER BY route, name").all() as TollGate[];
 }
 
-export function getTollGateById(id: number) {
-  return db.query("SELECT * FROM toll_gates WHERE id = ?").get(id);
+export function getTollGateById(id: number): TollGate | null {
+  return db.query("SELECT * FROM toll_gates WHERE id = ?").get(id) as TollGate | null;
 }
 
-export function searchTollGates(query: string) {
+export function searchTollGates(query: string): TollGate[] {
   return db
     .query(
       "SELECT * FROM toll_gates WHERE name LIKE ? OR route LIKE ? OR location LIKE ? ORDER BY route, name",
     )
-    .all(`%${query}%`, `%${query}%`, `%${query}%`);
+    .all(`%${query}%`, `%${query}%`, `%${query}%`) as TollGate[];
 }
 
-export function getTollGatesByIds(ids: number[]) {
+export function getTollGatesByIds(ids: number[]): TollGate[] {
   if (!ids || ids.length === 0) return [];
   const placeholders = ids.map(() => "?").join(",");
   return db
     .query(
       `SELECT id, name, route, location, class1_fee, class2_fee, class3_fee, class4_fee FROM toll_gates WHERE id IN (${placeholders})`,
     )
-    .all(...ids);
+    .all(...ids) as TollGate[];
 }
